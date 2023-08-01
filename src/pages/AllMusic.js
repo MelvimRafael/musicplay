@@ -50,7 +50,18 @@ const MusicArtist = styled.span`
 
 const AlbumInfo = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+`;
+
+
+const MusicDuration = styled.span`
+  font-size: 14px;
+  color: #777;
+  strong {
+    font-weight: bold;
+    margin-right: 5px; /* Adicionar espaçamento à direita para separar do texto do álbum */
+  }
 `;
 
 const MusicAlbum = styled.span`
@@ -58,16 +69,10 @@ const MusicAlbum = styled.span`
   color: #777;
   strong {
     font-weight: bold;
+    margin-left: 5px; /* Adicionar espaçamento à esquerda para separar do texto da duração */
   }
 `;
 
-const MusicDuration = styled.span`
-  font-size: 14px;
-  color: #777;
-  strong {
-    font-weight: bold;
-  }
-`;
 
 const PaginationContainer = styled.div`
   display: flex;
@@ -103,7 +108,7 @@ const PageNumber = styled.span`
 const AllMusicPage = () => {
   const itemsPerPage = 10; 
   const [allMusic, setAllMusic] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [startIndex, setStartIndex] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
@@ -121,20 +126,18 @@ const AllMusicPage = () => {
   }, []);
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1);
+    if (startIndex + itemsPerPage < allMusic.length) {
+      setStartIndex((prevStartIndex) => prevStartIndex + itemsPerPage);
     }
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
+    if (startIndex > 0) {
+      setStartIndex((prevStartIndex) => prevStartIndex - itemsPerPage);
     }
   };
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentMusic = allMusic.slice(startIndex, endIndex);
+  const currentMusic = allMusic.slice(startIndex, startIndex + itemsPerPage);
 
   const formatDuration = (durationInMillis) => {
     const durationInSeconds = durationInMillis / 1000;
@@ -154,25 +157,24 @@ const AllMusicPage = () => {
               <MusicName>{music.trackName}</MusicName>
               <MusicArtist>{music.artistName}</MusicArtist>
               <AlbumInfo>
-                <MusicAlbum>
-                  <strong>Album: </strong>
-                  {music.collectionName}
-                </MusicAlbum>
                 <MusicDuration>
-                  <strong>Duração: </strong>
-                  {formatDuration(music.trackTimeMillis)}
+                  <strong>Duração:</strong>
                 </MusicDuration>
+                <MusicDuration>{formatDuration(music.trackTimeMillis)}</MusicDuration>
+                <MusicAlbum>
+                  <strong>Album:</strong> {music.collectionName}
+                </MusicAlbum>
               </AlbumInfo>
             </MusicDetails>
           </MusicItem>
         ))}
       </MusicList>
       <PaginationContainer>
-        <PaginationButton onClick={handlePrevPage} disabled={currentPage === 1}>
+        <PaginationButton onClick={handlePrevPage} disabled={startIndex === 0}>
           Anterior
         </PaginationButton>
-        <PageNumber>{currentPage}</PageNumber>
-        <PaginationButton onClick={handleNextPage} disabled={currentPage === totalPages}>
+        <PageNumber>{Math.ceil(startIndex / itemsPerPage) + 1}</PageNumber>
+        <PaginationButton onClick={handleNextPage} disabled={startIndex + itemsPerPage >= allMusic.length}>
           Próxima
         </PaginationButton>
       </PaginationContainer>

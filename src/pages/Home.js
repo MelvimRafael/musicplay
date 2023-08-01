@@ -39,9 +39,9 @@ const ImageSlide = styled.img`
 
 const Home = () => {
   const carouselImages = [
-    'https://via.placeholder.com/600x200', 
-    'https://via.placeholder.com/600x200', 
-    'https://via.placeholder.com/600x200', 
+    'https://st3.depositphotos.com/3367263/16225/i/600/depositphotos_162256456-stock-photo-piano-with-white-and-black.jpg', 
+    'https://st.depositphotos.com/1835807/2528/i/450/depositphotos_25280943-stock-photo-piano-keyboard-and-headphones.jpg', 
+    'https://onofre.musica.ufrn.br/wp-content/uploads/2020/05/Banner-MV-1-600x200.jpeg', 
   ];
 
   return (
