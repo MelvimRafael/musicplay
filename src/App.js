@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
@@ -10,8 +9,7 @@ import Favorites from './pages/Favorites';
 import AllMusicPage from './pages/AllMusic';
 import musicAPI from './services/musicAPI';
 import FavoriteProvider from './FavoriteContext';
-import Footer from './components/Footer'; // Import the Footer component
-
+import Footer from './components/Footer'; 
 const AppContainer = styled.div`
   background-color: #f2f2f2;
 `;
@@ -29,7 +27,7 @@ const App = () => {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/all-music" element={<AllMusicPage />} />
           </Routes>
-          <Footer /> {/* Add the Footer component at the bottom */}
+          <Footer /> {}
         </AppContainer>
       </FavoriteProvider>
     </Router>

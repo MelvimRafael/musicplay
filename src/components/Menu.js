@@ -1,13 +1,12 @@
-// src/components/Menu.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-  background-color: #ff4d4d; /* Tom de vermelho */
+  background-color: #ff4d4d; 
   padding: 10px;
   display: flex;
-  justify-content: space-between; /* Align items to the left and right */
+  justify-content: space-between; 
   align-items: center;
 `;
 
@@ -30,7 +29,7 @@ const MenuLink = styled(Link)`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #f9f9f9; /* Tom mais claro de branco ao passar o mouse */
+    color: #f9f9f9; 
   }
 `;
 
@@ -42,7 +41,7 @@ const Title = styled.h1`
 const Separator = styled.div`
   height: 30px;
   width: 1px;
-  background-color: #fff; /* Cor da linha separadora */
+  background-color: #fff; 
   margin: 0 10px;
 `;
 
@@ -63,7 +62,7 @@ const Menu = () => {
           <MenuLink to="/favorites">Favoritos</MenuLink>
         </MenuItem>
         <Separator />
-        {/* Add a new menu item with the link to show all music */}
+        {}
         <MenuItem>
           <MenuLink to="/all-music">Todas as Músicas</MenuLink>
         </MenuItem>

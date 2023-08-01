@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useFavoriteContext } from '../FavoriteContext'; // The correct path to FavoriteContext.js
-// Import the context hook
+import { useFavoriteContext } from '../FavoriteContext'; 
 
 const FavoritesContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 20px;
-  background-color: #f2f2f2; /* Gray background color */
+  background-color: #f2f2f2; 
 `;
 
 const MusicListContainer = styled.div`
@@ -16,7 +15,7 @@ const MusicListContainer = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 20px;
-  color: #ff4d4d; /* Red color */
+  color: #ff4d4d; 
 `;
 
 const FavoritesList = styled.ul`
@@ -42,11 +41,11 @@ const FavoriteImage = styled.img`
 const HeartIconContainer = styled.div`
   margin-left: 20px;
   font-size: 20px;
-  color: #ff4d4d; /* Red color */
+  color: #ff4d4d; 
 `;
 
 const Favorites = () => {
-  const { favorites } = useFavoriteContext(); // Use the favorites context
+  const { favorites } = useFavoriteContext(); 
 
   return (
     <FavoritesContainer>
@@ -62,7 +61,7 @@ const Favorites = () => {
         </FavoritesList>
       </MusicListContainer>
       <HeartIconContainer>
-        <i className="fa fa-heart"></i> {/* Replace with your heart icon component */}
+        <i className="fa fa-heart"></i> {}
       </HeartIconContainer>
     </FavoritesContainer>
   );

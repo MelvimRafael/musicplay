@@ -11,17 +11,17 @@ const HomeContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: #ff4d4d; /* Tom de vermelho */
+  color: #ff4d4d; 
   margin-bottom: 20px;
 `;
 
 const Subtitle = styled.h2`
-  color: #333; /* Cor do texto padrão */
+  color: #333; 
   margin-bottom: 10px;
 `;
 
 const Description = styled.p`
-  color: #555; /* Cor do texto secundário */
+  color: #555; 
   max-width: 600px;
   text-align: center;
 `;
@@ -39,9 +39,9 @@ const ImageSlide = styled.img`
 
 const Home = () => {
   const carouselImages = [
-    'https://via.placeholder.com/600x200', // Replace with the actual image URLs
-    'https://via.placeholder.com/600x200', // Replace with the actual image URLs
-    'https://via.placeholder.com/600x200', // Replace with the actual image URLs
+    'https://via.placeholder.com/600x200', 
+    'https://via.placeholder.com/600x200', 
+    'https://via.placeholder.com/600x200', 
   ];
 
   return (

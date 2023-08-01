@@ -2,7 +2,7 @@
     import styled from 'styled-components';
     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
     import { faHeart } from '@fortawesome/free-solid-svg-icons';
-    import { useFavoriteContext } from '../FavoriteContext'; // Importe o hook do contexto
+    import { useFavoriteContext } from '../FavoriteContext'; 
     import musicAPI from '../services/musicAPI';
 
     const SearchContainer = styled.div`
@@ -14,20 +14,20 @@
 
     const Title = styled.h1`
     margin-bottom: 20px;
-    color: #ff4d4d; /* Tom de vermelho */
+    color: #ff4d4d; 
     `;
 
     const SearchInput = styled.input`
     padding: 10px;
     width: 300px;
     margin-bottom: 10px;
-    border: 2px solid #ff4d4d; /* Tom de vermelho */
+    border: 2px solid #ff4d4d; 
     border-radius: 4px;
     `;
 
     const SearchButton = styled.button`
     padding: 10px 20px;
-    background-color: #ff4d4d; /* Tom de vermelho */
+    background-color: #ff4d4d; 
     color: #fff;
     border: none;
     border-radius: 4px;

@@ -1,4 +1,3 @@
-// src/pages/AllMusic.js
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import musicAPI from '../services/musicAPI';
@@ -6,14 +5,14 @@ import musicAPI from '../services/musicAPI';
 const AllMusicContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the left */
+  align-items: flex-start; 
   padding: 20px;
 `;
 
 const Title = styled.h1`
   margin-bottom: 20px;
-  color: #ff4d4d; /* Tom de vermelho */
-  text-align: center; /* Center the title */
+  color: #ff4d4d; 
+  text-align: center; 
 `;
 
 const MusicList = styled.ul`
@@ -49,6 +48,27 @@ const MusicArtist = styled.span`
   color: #555; /* Cor do texto secundário */
 `;
 
+const AlbumInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const MusicAlbum = styled.span`
+  font-size: 14px;
+  color: #777;
+  strong {
+    font-weight: bold;
+  }
+`;
+
+const MusicDuration = styled.span`
+  font-size: 14px;
+  color: #777;
+  strong {
+    font-weight: bold;
+  }
+`;
+
 const PaginationContainer = styled.div`
   display: flex;
   align-items: center;
@@ -81,7 +101,7 @@ const PageNumber = styled.span`
 `;
 
 const AllMusicPage = () => {
-  const itemsPerPage = 10; // Number of items to display per page
+  const itemsPerPage = 10; 
   const [allMusic, setAllMusic] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -116,6 +136,13 @@ const AllMusicPage = () => {
   const endIndex = startIndex + itemsPerPage;
   const currentMusic = allMusic.slice(startIndex, endIndex);
 
+  const formatDuration = (durationInMillis) => {
+    const durationInSeconds = durationInMillis / 1000;
+    const minutes = Math.floor(durationInSeconds / 60);
+    const seconds = Math.floor(durationInSeconds % 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   return (
     <AllMusicContainer>
       <Title>Todas as Músicas</Title>
@@ -126,6 +153,16 @@ const AllMusicPage = () => {
             <MusicDetails>
               <MusicName>{music.trackName}</MusicName>
               <MusicArtist>{music.artistName}</MusicArtist>
+              <AlbumInfo>
+                <MusicAlbum>
+                  <strong>Album: </strong>
+                  {music.collectionName}
+                </MusicAlbum>
+                <MusicDuration>
+                  <strong>Duração: </strong>
+                  {formatDuration(music.trackTimeMillis)}
+                </MusicDuration>
+              </AlbumInfo>
             </MusicDetails>
           </MusicItem>
         ))}
